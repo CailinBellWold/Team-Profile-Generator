@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "[![License: MIT](https://img.shields.io/github/license/CailinBellWold/Team-Profile-Generator?style=plastic)](https://opensource.org/licenses/MIT)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CailinBellWold/Team-Profile-Generator.git"
+  },
+  "author": "Cailin Bell Wold",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "bugs": {
+    "url": "https://github.com/CailinBellWold/Team-Profile-Generator/issues"
+  },
+  "homepage": "https://github.com/CailinBellWold/Team-Profile-Generator#readme"
+}
