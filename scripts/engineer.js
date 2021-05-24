@@ -1,8 +1,8 @@
 const TeamMember = require('./teammember');
 
 class Engineer extends TeamMember {
-    constructor(name, id, email, gitHubUserName) {
-        super(name, id, email);
+    constructor(name, eid, email, gitHubUserName) {
+        super(name, eid, email);
         this.gitHubUserName = gitHubUserName;
     }
 }

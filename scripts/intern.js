@@ -1,8 +1,8 @@
 const TeamMember = require('./teammember');
 
 class Intern extends TeamMember {
-    constructor(name, id, email, school) {
-        super(name, id, email);
+    constructor(name, eid, email, school) {
+        super(name, eid, email);
         this.school = school;
     }
 }

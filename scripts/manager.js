@@ -1,8 +1,8 @@
 const TeamMember = require('./teammember');
 
 class Manager extends TeamMember {
-    constructor(name, id, email, officeNum) {
-        super(name, id, email);
+    constructor(name, eid, email, officeNum) {
+        super(name, eid, email);
         this.officeNum = officeNum;
     }
 }

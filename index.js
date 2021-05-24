@@ -17,14 +17,9 @@ const welcome =  () => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'teamName',
+            name: 'welcome',
             message: 'Welcome to your automated Team Profile Generator. \n You will be asked to input information about your team, starting with your Team Manager. \n These questions will help to complete your customized MyTeam.html. \n Let\'s begin! Press ENTER to continue.',
         },
-    // ]);
-    // const {teamName} = answers;
-    // const teamName = new TeamName(teamName);
-    // teamArr.push(teamName);
-    // addManager();
     ])
 };
 
@@ -65,6 +60,7 @@ const addManager = () => {
     teamArr.push(manager);
     if (answers.queryMoreReports === 'Yes') {
         addReports();
+        return;
     } else {
         return;
     }
@@ -96,7 +92,7 @@ const addReports = () => {
         },
         {
             type: 'input',
-            name: 'github',
+            name: 'gitHubUserName',
             message: ({ name }) => `Input ${name}\'s GitHub username.`,
             when: (input) => input.title === 'Engineer',
         },
@@ -114,32 +110,41 @@ const addReports = () => {
         },
     ])
     .then(answers => {
-        const {name, eid, email, github, school } = answers;
+        const {name, eid, email, gitHubUserName, school } = answers;
 
         if ((answers) => answers.role === 'Engineer') {
-            const engineer = new Engineer (name, eid, email, github);
+            const engineer = new Engineer (name, eid, email, gitHubUserName);
             teamArr.push(engineer); 
-        } else if ((answers) => answers.role === 'Intern') {
-            const intern = new Intern (name, eid, email, school);
-            teamArr.push(intern);
-        }
-    }) //TO DO: Figure out How to get it to run through the pushes, THEN still use those answers to decide if it needs to run again.
-    .then(answers => {
-        if (answers.queryMoreReports === 'Yes') {
-            addReports();
+            
+            if (answers.queryMoreReports === 'Yes') {
+                addReports();
+                return;
             } else {
                 return;
             }
-    })
+        
+        } else if ((answers) => answers.role === 'Intern') {
+            const intern = new Intern (name, eid, email, school);
+            teamArr.push(intern);
+
+            if (answers.queryMoreReports === 'Yes') {
+                addReports();
+                return;
+            } else {
+                return;
+            }
+        }
+    })     
 };
 
 // Function to initialize app
 const init = () => {
     welcome()
         .then(addManager)
+        // .then(() => console.log((teamArr)))
         // .then(addReports)
         // .then((answers) => writeFileAsync('./output/MyTeam.html', generateHTML(answers)))
-        .then(() => console.log('Successfully wrote MyTeam.html to your output folder'))
+        // .then(() => console.log('Successfully wrote MyTeam.html to your output folder'))
         .catch((err) => console.error(err));
 };
 

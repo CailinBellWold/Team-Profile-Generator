@@ -1,7 +1,7 @@
 class TeamMember {
-    constructor(name, id, email) {
+    constructor(name, eid, email) {
         this.name = name;
-        this.id = id;
+        this.eid = eid;
         this.email = email;
     }
 }
