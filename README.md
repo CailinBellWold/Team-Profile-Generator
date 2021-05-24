@@ -37,9 +37,9 @@ This exercise provided my first experience with writing tests and utilizing jest
 - Node.js
 - Shields.io
 - Jestjs.io
-<!-- - [NPM Inquirer Package](https://www.npmjs.com/package/inquirer)
+- [NPM Inquirer Package](https://www.npmjs.com/package/inquirer)
 - [NPM FS Package](https://www.npmjs.com/package/fs)
-- [NPM Util Package](https://www.npmjs.com/package/util) -->
+<!-- - [NPM Util Package](https://www.npmjs.com/package/util) -->
 
 ## Installation
 
