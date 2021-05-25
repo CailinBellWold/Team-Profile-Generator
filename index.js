@@ -24,7 +24,6 @@ const welcome =  () => {
 };
 
 // Questions Awaiting User Input (Manager is Required First)
-
 const addManager = () => {
     return inquirer.prompt([
         {
@@ -134,7 +133,7 @@ const addReports = () => {
                 return;
             }
         }
-    })     
+    })
 };
 
 // Function to initialize app
@@ -142,29 +141,10 @@ const init = () => {
     welcome()
         .then(addManager)
         // .then(() => console.log((teamArr)))
-        // .then(addReports)
         // .then((answers) => writeFileAsync('./output/MyTeam.html', generateHTML(answers)))
         // .then(() => console.log('Successfully wrote MyTeam.html to your output folder'))
         .catch((err) => console.error(err));
 };
-
-function generateHTML(answers) {
-    `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Document</title>
-    </head>
-    <body>
-      <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-       ${Engineer.name}>
-      </div>
-    </div>
-    </body>
-    </html>`;
-}
 
 // Function call to initialize app
 init();

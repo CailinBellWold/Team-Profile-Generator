@@ -1,0 +1,183 @@
+:root {
+  --c-lightcoral: #ee8375;
+  --c-violetred: #db8493;
+  --c-plum: #b8528b;
+  --c-dblue: #323266;
+  --c-ddblue: #191936;
+  --c-darkorchid: #8547bb;
+  --c-palevioletred: #c0609c;
+  --c-white: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--c-dblue);
+  font-family: 'Poppins', sans-serif;
+  color: var(--c-lightcoral);
+}
+
+.jumbotron {
+  min-height: 6em;
+  padding: 2rem;
+  background-color: var(--c-palevioletred);
+  color: var(--c-white);
+}
+
+main {
+  padding: 2rem 5rem;
+}
+
+h3, h4, h5 {
+  font-family: 'Roboto', serif;
+}
+
+.manager {
+  color: var(--c-white);
+  border-radius: 10px;
+  background-color: var(--c-lightcoral);
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.4s box-shadow,.4s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  opacity: 0.9;
+}
+
+.engineer {
+  color: var(--c-white);
+  border-radius: 10px;
+  background-color: var(--c-violetred);
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.4s box-shadow,.4s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  opacity: 0.9;
+}
+
+.intern {
+  color: var(--c-white);
+  border-radius: 10px;
+  background-color: var(--c-plum);
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .4s transform cubic-bezier(.155,1.105,.295,1.12),.4s box-shadow,.4s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  opacity: 0.9;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+  opacity: 1;
+}
+
+/*MediaQuery for Mobile*/
+@media screen and (max-width: 480px) {
+  body {
+    background-color: var(--c-ddblue);
+    color: var(--c-llneutral);
+  }
+
+  main {
+    padding-top: 6rem;
+  }
+
+  .cmb-headshot {
+    box-shadow: 8px 10px 10px var(--c-blue);
+    border: .05em solid var(--c-blue);
+  }
+
+  h4 {
+    color: var(--c-dblue);
+  }
+
+  .cmb-fa {
+    text-decoration: none;
+    color: var(--c-llneutral);
+    font-size: 1.5em;
+  }
+  
+  .cmb-fa:hover {
+    color: var(--c-dpink);
+    text-shadow: 8px 10px 10px var(--c-blue);
+  }
+
+  .text-muted {
+    color: var(--c-llneutral) !important;
+  }
+
+  .cmb-navbar {
+    background-image: linear-gradient(var(--c-lneutral), var(--c-neutral));
+    box-shadow: none;
+  }
+
+  .card-title,
+  .card-text {
+    color: var(--c-dblue);
+  }
+
+  .card {
+    border-radius: 4px;
+    background: var(--c-neutral);
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition:  none;
+    opacity: 1;
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    opacity: 1;
+  }
+
+  footer .cmb-fa {
+    text-decoration: none;
+    color: var(--c-ddblue);
+    font-size: 1.5em;
+  }
+  
+  footer .cmb-fa:hover {
+    color: var(--c-dpink);
+    text-shadow: 8px 10px 10px var(--c-taupe);
+  }
+}
+
+/* @media screen and (max-width: 1173px) {
+  body {
+    margin: 0 2%;
+  }
+}
+
+@media screen and (max-width: 1022px) {
+  body {
+    margin: 0 0%;
+  }
+}
+
+@media screen and (max-width: 1012px) {
+  body {
+    margin: 0 2%;
+  }
+
+  .about,
+  .projects {
+    flex-direction: column;
+    padding: 2% 2% 2% 2%;
+  }
+
+  .h2, {
+    display: inline-block;
+    text-align: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: left;
+    padding: 2% 0 2% 0;
+    width: 100%;
+  }
+} */
+
+/* When using `max-width` as the breakpoint, you must go from widest to narrowest to avoid conflict
+
+320px — 480px: Mobile devices
+
+481px — 768px: iPads, Tablets
+
+769px — 1024px: Small screens, laptops
+1025px — 1200px: Desktops, large screens
+1201px and more —  Extra large screens, TV*/
