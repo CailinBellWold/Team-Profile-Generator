@@ -1,9 +1,8 @@
 const index = require('./index');
-// const TeamMember = require('./scripts/teammember');
-// const Manager = require('./scripts/manager');
-// const Engineer = require('./scripts/engineer');
-// const Intern = require('./scripts/intern');
-// const Team = require('./scripts/team');
+// const TeamMember = require('./lib/teammember');
+// const Manager = require('./lib/manager');
+// const Engineer = require('./lib/engineer');
+// const Intern = require('./lib/intern');
 
 // Generates HTML for My-Team
 const generateHTML = (teamArr) => {

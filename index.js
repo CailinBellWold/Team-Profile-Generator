@@ -2,10 +2,10 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 
-const TeamMember = require('./scripts/teammember');
-const Manager = require('./scripts/manager');
-const Engineer = require('./scripts/engineer');
-const Intern = require('./scripts/intern');
+const TeamMember = require('./lib/teammember');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 // const Team = require('./scripts/team');
 
 const teamArr = [];
@@ -141,8 +141,8 @@ const init = () => {
     welcome()
         .then(addManager)
         // .then(() => console.log((teamArr)))
-        // .then((answers) => writeFileAsync('./output/MyTeam.html', generateHTML(answers)))
-        // .then(() => console.log('Successfully wrote MyTeam.html to your output folder'))
+        // .then((answers) => writeFileAsync('./dist/MyTeam.html', generateHTML(answers)))
+        // .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
         .catch((err) => console.error(err));
 };
 
@@ -152,4 +152,4 @@ init();
 // welcome();
 // addManager();
 // addReports();
-// writeFileAsynch('./output/MyTeam.html', generateHTML(answers));
+// writeFileAsynch('./dist/MyTeam.html', generateHTML(answers));
