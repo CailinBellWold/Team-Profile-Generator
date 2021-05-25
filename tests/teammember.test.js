@@ -17,7 +17,7 @@ describe("TeamMember", () => {
         const input = 100;
         const expected = {"eid": 100, "email": "name@name.com", "name": "First Last"};
         
-        const result = new TeamMember("First Last", 100, "name@name.com");
+        const result = new TeamMember("First Last", input, "name@name.com");
 
         expect(result).toEqual(expected);
         });
@@ -28,7 +28,7 @@ describe("TeamMember", () => {
         const input = "cmbellwold@gmail.com";
         const expected = {"eid": 1, "email": "cmbellwold@gmail.com", "name": "First Last"};
         
-        const result = new TeamMember("First Last", 1, "cmbellwold@gmail.com");
+        const result = new TeamMember("First Last", 1, input);
 
         expect(result).toEqual(expected);
         });
