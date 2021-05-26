@@ -140,16 +140,11 @@ const addReports = () => {
 const init = () => {
     welcome()
         .then(addManager)
-        // .then(() => console.log((teamArr)))
-        // .then((answers) => writeFileAsync('./dist/MyTeam.html', generateHTML(answers)))
-        // .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
+        .then(() => console.log((teamArr)))
+        .then((teamArr) => writeFileAsync('./dist/MyTeam.html', generateHTML(teamArr)))
+        .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
         .catch((err) => console.error(err));
 };
 
 // Function call to initialize app
 init();
-
-// welcome();
-// addManager();
-// addReports();
-// writeFileAsynch('./dist/MyTeam.html', generateHTML(answers));

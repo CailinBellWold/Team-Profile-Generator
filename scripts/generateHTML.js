@@ -1,3 +1,4 @@
+const { rmSync, fstat } = require('fs');
 const index = require('./index');
 // const TeamMember = require('./lib/teammember');
 // const Manager = require('./lib/manager');
@@ -63,64 +64,64 @@ const generateHTML = (teamArr) => {
         
         </body>
         </html>`)
-    .then(teamArr)
-
-// MANAGER
-// <div class='row'>
-//     <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
-//         <div class='card manager'>
-//             <div class='card-body'>
-//                 <h4 class='card-title text-center'>Employee Name</h4>
-//                 <h5 class='card-title text-center'><i class="fas fa-tasks"></i>  Manager</h5>
-//                 <div class='card'>
-//                     <ul class='list-group list-group-flush'>
-//                         <li class='list-group-item'>Employee ID:</li>
-//                         <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
-//                         <li class='list-group-item'>Office Number:</li>
-//                     </ul>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-// </div>
-
-// ENGINEER
-// <div class='row'>
-//     <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
-//         <div class='card engineer'>
-//             <div class='card-body'>
-//                 <h4 class='card-title text-center'>Employee Name</h4>
-//                 <h5 class='text-center'><i class="fas fa-laptop-code"></i>  Engineer</h5>
-//                 <div class='card'>
-//                     <ul class='list-group list-group-flush'>
-//                         <li class='list-group-item'>Employee ID:</li>
-//                         <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
-//                         <li class='list-group-item'>GitHub Username:  <a href="#"></a></li>
-//                     </ul>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-// </div>
-
-// INTERN
-// <div class='row'>  
-//     <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
-//         <div class='card intern'>
-//             <div class='card-body'>
-//             <h4 class='card-title text-center'>Employee Name</h4>
-//             <h5 class='text-center'><i class="fas fa-user-graduate"></i>  Intern</h5>
-//                 <div class='card'>
-//                     <ul class='list-group list-group-flush'>
-//                         <li class='list-group-item'>Employee ID:</li>
-//                         <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
-//                         <li class='list-group-item'>School:</li>
-//                     </ul>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-// </div>
-}
+    .then(() => {return fs.promises.readFile('./dist/MyTeam.html')})
+    .then(() => {if (teamArr.role === 'Manager') {return fs.promises.appendFile('./dist/MyTeam.html',
+        `<div class='row'>
+            <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
+                <div class='card manager'>
+                    <div class='card-body'>
+                        <h4 class='card-title text-center'>Employee Name</h4>
+                        <h5 class='card-title text-center'><i class="fas fa-tasks"></i>  Manager</h5>
+                            <div class='card'>
+                                <ul class='list-group list-group-flush'>
+                                    <li class='list-group-item'>Employee ID:</li>
+                                    <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
+                                    <li class='list-group-item'>Office Number:</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`
+    )}})
+    .then(() => {if (teamArr.role === 'Engineer') {return fs.promises.appendFile('./dist/MyTeam.html',
+        `<div class='row'>
+            <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
+                <div class='card engineer'>
+                    <div class='card-body'>
+                        <h4 class='card-title text-center'>Employee Name</h4>
+                        <h5 class='text-center'><i class="fas fa-laptop-code"></i>  Engineer</h5>
+                        <div class='card'>
+                            <ul class='list-group list-group-flush'>
+                                <li class='list-group-item'>Employee ID:</li>
+                                <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
+                                <li class='list-group-item'>GitHub Username:  <a href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    )}})
+    .then(() => {if (teamArr.role === 'Intern') {return fs.promises.appendFile('./dist/MyTeam.html',
+        `<div class='row'>  
+            <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
+                <div class='card intern'>
+                    <div class='card-body'>
+                    <h4 class='card-title text-center'>Employee Name</h4>
+                    <h5 class='text-center'><i class="fas fa-user-graduate"></i>  Intern</h5>
+                        <div class='card'>
+                            <ul class='list-group list-group-flush'>
+                                <li class='list-group-item'>Employee ID:</li>
+                                <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
+                                <li class='list-group-item'>School:</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    )}})
+};
 
 module.exports = generateHTML;
