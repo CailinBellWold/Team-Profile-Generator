@@ -1,9 +1,5 @@
-const { rmSync, fstat } = require('fs');
+const fs = require('fs');
 const index = require('./index');
-// const TeamMember = require('./lib/teammember');
-// const Manager = require('./lib/manager');
-// const Engineer = require('./lib/engineer');
-// const Intern = require('./lib/intern');
 
 // Generates HTML for My-Team
 const generateHTML = (teamArr) => {
@@ -65,7 +61,7 @@ const generateHTML = (teamArr) => {
         </body>
         </html>`)
     .then(() => {return fs.promises.readFile('./dist/MyTeam.html')})
-    .then(() => {if (teamArr.role === 'Manager') {return fs.promises.appendFile('./dist/MyTeam.html',
+    .then(() => {if (Manager) {return fs.promises.appendFile('./dist/MyTeam.html',
         `<div class='row'>
             <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
                 <div class='card manager'>
@@ -84,7 +80,7 @@ const generateHTML = (teamArr) => {
                 </div>
             </div>`
     )}})
-    .then(() => {if (teamArr.role === 'Engineer') {return fs.promises.appendFile('./dist/MyTeam.html',
+    .then(() => {if (Engineer) {return fs.promises.appendFile('./dist/MyTeam.html',
         `<div class='row'>
             <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
                 <div class='card engineer'>
@@ -103,7 +99,7 @@ const generateHTML = (teamArr) => {
             </div>
         </div>`
     )}})
-    .then(() => {if (teamArr.role === 'Intern') {return fs.promises.appendFile('./dist/MyTeam.html',
+    .then(() => {if (Intern) {return fs.promises.appendFile('./dist/MyTeam.html',
         `<div class='row'>  
             <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
                 <div class='card intern'>

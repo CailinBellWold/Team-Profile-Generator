@@ -4,7 +4,7 @@ describe("Manager", () => {
     describe("OfficeNum", () => {
         it("Should set the Office Number via the constructor function", () => {
         const input = "42";
-        const expected = {"eid": 1, "email": "name@name.com", "officeNum": "42", "name": "Name"};
+        const expected = {"name": "Name", "eid": 1, "email": "name@name.com", "officeNum": "42"};
         
         const result = new Manager("Name", 1, "name@name.com", input);
 

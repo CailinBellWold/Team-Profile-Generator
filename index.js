@@ -2,11 +2,10 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 
-const TeamMember = require('./lib/teammember');
+// const TeamMember = require('./lib/teammember');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-// const Team = require('./scripts/team');
 
 const teamArr = [];
 
@@ -34,17 +33,17 @@ const addManager = () => {
         {
             type: 'input',
             name: 'eid',
-            message: ({ name }) => `Input ${name}\'s employee ID.`,
+            message: ({name}) => `Input ${name}\'s employee ID.`,
         },
         {
             type: 'input',
             name: 'email',
-            message: ({ name }) => `Input ${name}\'s email address.`,
+            message: ({name}) => `Input ${name}\'s email address.`,
         },
         {
             type: 'input',
             name: 'officeNum',
-            message: ({ name }) => `Input ${name}\'s office number.`,
+            message: ({name}) => `Input ${name}\'s office number.`,
         },
         {
             type: 'list',
@@ -59,7 +58,6 @@ const addManager = () => {
     teamArr.push(manager);
     if (answers.queryMoreReports === 'Yes') {
         addReports();
-        return;
     } else {
         return;
     }
@@ -77,28 +75,28 @@ const addReports = () => {
         {
             type: 'input',
             name: 'name',
-            message: ({ title }) => `Input ${title}\'s name.`,
+            message: ({title}) => `Input ${title}\'s name.`,
         },
         {
             type: 'input',
             name: 'eid',
-            message: ({ name }) => `Input ${name}\'s employee ID.`,
+            message: ({name}) => `Input ${name}\'s employee ID.`,
         },
         {
             type: 'input',
             name: 'email',
-            message: ({ name }) => `Input ${name}\'s email address.`,
+            message: ({name}) => `Input ${name}\'s email address.`,
         },
         {
             type: 'input',
             name: 'gitHubUserName',
-            message: ({ name }) => `Input ${name}\'s GitHub username.`,
+            message: ({name}) => `Input ${name}\'s GitHub username.`,
             when: (input) => input.title === 'Engineer',
         },
         {
             type: 'input',
             name: 'school',
-            message: ({ name }) => `Input ${name}\'s school.`,
+            message: ({name}) => `Input ${name}\'s school.`,
             when: (input) => input.title === 'Intern',
         },
         {
@@ -109,30 +107,17 @@ const addReports = () => {
         },
     ])
     .then(answers => {
-        const {name, eid, email, gitHubUserName, school } = answers;
-
-        if ((answers) => answers.role === 'Engineer') {
+        if (answers.title === 'Engineer') {
+            const {name, eid, email, gitHubUserName} = answers;
             const engineer = new Engineer (name, eid, email, gitHubUserName);
             teamArr.push(engineer); 
-            
-            if (answers.queryMoreReports === 'Yes') {
-                addReports();
-                return;
-            } else {
-                return;
-            }
         
-        } else if ((answers) => answers.role === 'Intern') {
+        } else if (answers.title === 'Intern') {
+            const {name, eid, email, school} = answers;
             const intern = new Intern (name, eid, email, school);
             teamArr.push(intern);
-
-            if (answers.queryMoreReports === 'Yes') {
-                addReports();
-                return;
-            } else {
-                return;
-            }
         }
+        (answers.queryMoreReports === 'Yes') ? addReports() : console.log(teamArr); return;
     })
 };
 
@@ -140,10 +125,10 @@ const addReports = () => {
 const init = () => {
     welcome()
         .then(addManager)
-        .then(() => console.log((teamArr)))
-        .then((teamArr) => writeFileAsync('./dist/MyTeam.html', generateHTML(teamArr)))
-        .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
-        .catch((err) => console.error(err));
+        // .then(() => console.log((teamArr)))
+        // .then((teamArr) => writeFileAsync('./dist/MyTeam.html', generateHTML(teamArr)))
+        // .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
+        // .catch((err) => console.error(err));
 };
 
 // Function call to initialize app
