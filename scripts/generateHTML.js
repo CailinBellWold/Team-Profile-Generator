@@ -1,5 +1,7 @@
 const fs = require('fs');
-const index = require('./index');
+const index = require('../index');
+
+// let currentTeamMemberIndex = [];
 
 // Generates HTML for My-Team
 const generateHTML = (teamArr) => {
@@ -38,13 +40,13 @@ const generateHTML = (teamArr) => {
                 <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
                     <div class='card manager'>
                         <div class='card-body'>
-                            <h4 class='card-title text-center'>Employee Name</h4>
+                            <h4 class='card-title text-center'>${Manager.name}</h4>
                             <h5 class='card-title text-center'>Manager</h5>
                             <div class='card'>
                                 <ul class='list-group list-group-flush'>
-                                    <li class='list-group-item'>Employee ID:</li>
-                                    <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
-                                    <li class='list-group-item'>Office Number:</li>
+                                    <li class='list-group-item'>Employee ID:  ${Manager.eid}</li>
+                                    <li class='list-group-item'>Email:  ${Manager.email} <a href="mailto:#"></a></li>
+                                    <li class='list-group-item'>Office Number:  ${Manager.officeNum}</li>
                                 </ul>
                             </div>
                         </div>
@@ -61,37 +63,18 @@ const generateHTML = (teamArr) => {
         </body>
         </html>`)
     .then(() => {return fs.promises.readFile('./dist/MyTeam.html')})
-    .then(() => {if (Manager) {return fs.promises.appendFile('./dist/MyTeam.html',
-        `<div class='row'>
-            <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
-                <div class='card manager'>
-                    <div class='card-body'>
-                        <h4 class='card-title text-center'>Employee Name</h4>
-                        <h5 class='card-title text-center'><i class="fas fa-tasks"></i>  Manager</h5>
-                            <div class='card'>
-                                <ul class='list-group list-group-flush'>
-                                    <li class='list-group-item'>Employee ID:</li>
-                                    <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
-                                    <li class='list-group-item'>Office Number:</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>`
-    )}})
     .then(() => {if (Engineer) {return fs.promises.appendFile('./dist/MyTeam.html',
         `<div class='row'>
             <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
                 <div class='card engineer'>
                     <div class='card-body'>
-                        <h4 class='card-title text-center'>Employee Name</h4>
-                        <h5 class='text-center'><i class="fas fa-laptop-code"></i>  Engineer</h5>
+                        <h4 class='card-title text-center'>${Engineer.name}</h4>
+                        <h5 class='text-center'><i class="fas fa-laptop-code"></i>Engineer</h5>
                         <div class='card'>
                             <ul class='list-group list-group-flush'>
-                                <li class='list-group-item'>Employee ID:</li>
-                                <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
-                                <li class='list-group-item'>GitHub Username:  <a href="#"></a></li>
+                                <li class='list-group-item'>Employee ID: ${Engineer.eid}</li>
+                                <li class='list-group-item'>Email:  ${Engineer.email}<a href="mailto:${Engineer.email}"></a></li>
+                                <li class='list-group-item'>GitHub Username:  ${Engineer.gitHubUserName} <a href="${Engineer.gitHubUserName}"></a></li>
                             </ul>
                         </div>
                     </div>
@@ -104,13 +87,13 @@ const generateHTML = (teamArr) => {
             <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
                 <div class='card intern'>
                     <div class='card-body'>
-                    <h4 class='card-title text-center'>Employee Name</h4>
-                    <h5 class='text-center'><i class="fas fa-user-graduate"></i>  Intern</h5>
+                    <h4 class='card-title text-center'>${Intern.name}</h4>
+                    <h5 class='text-center'><i class="fas fa-user-graduate"></i>Intern</h5>
                         <div class='card'>
                             <ul class='list-group list-group-flush'>
-                                <li class='list-group-item'>Employee ID:</li>
-                                <li class='list-group-item'>Email:  <a href="mailto:#"></a></li>
-                                <li class='list-group-item'>School:</li>
+                                <li class='list-group-item'>Employee ID:  ${Intern.eid}</li>
+                                <li class='list-group-item'>Email:  ${Intern.email}<a href="mailto:${Intern.email}"></a></li>
+                                <li class='list-group-item'>School:  ${Intern.school}</li>
                             </ul>
                         </div>
                     </div>

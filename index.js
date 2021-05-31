@@ -2,15 +2,16 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
 
-// const TeamMember = require('./lib/teammember');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 
+const generateHTML = require('./scripts/generateHTML');
+
 const teamArr = [];
 
 // Creates file Asynchronously (we used this structure in class)
-const writeFileAsync = util.promisify(fs.writeFile);
+const writeFile = util.promisify(fs.writeFile);
 
 const welcome =  () => {
     return inquirer.prompt([
@@ -19,6 +20,7 @@ const welcome =  () => {
             name: 'welcome',
             message: 'Welcome to your automated Team Profile Generator. \n You will be asked to input information about your team, starting with your Team Manager. \n These questions will help to complete your customized MyTeam.html. \n Let\'s begin! Press ENTER to continue.',
         },
+        addManager()
     ])
 };
 
@@ -117,19 +119,16 @@ const addReports = () => {
             const intern = new Intern (name, eid, email, school);
             teamArr.push(intern);
         }
-        (answers.queryMoreReports === 'Yes') ? addReports() : console.log(teamArr); return;
+        (answers.queryMoreReports === 'Yes') ? addReports() : console.log(teamArr); writefile(); return;
     })
 };
 
+writeFile('./dist/MyTeam.html', generateHTML(teamArr))
+    .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
+    .catch((err) => console.error(err));
+
 // Function to initialize app
-const init = () => {
-    welcome()
-        .then(addManager)
-        // .then(() => console.log((teamArr)))
-        // .then((teamArr) => writeFileAsync('./dist/MyTeam.html', generateHTML(teamArr)))
-        // .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
-        // .catch((err) => console.error(err));
-};
+const init = () => welcome()
 
 // Function call to initialize app
 init();
