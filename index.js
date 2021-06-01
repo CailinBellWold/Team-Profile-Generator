@@ -41,7 +41,7 @@ const addManager = () => {
         },
         {
             type: 'input',
-            name: 'eid',
+            name: 'id',
             message: ({name}) => `Input ${name}\'s employee ID.`,
         },
         {
@@ -51,7 +51,7 @@ const addManager = () => {
         },
         {
             type: 'input',
-            name: 'officeNum',
+            name: 'officeNumber',
             message: ({name}) => `Input ${name}\'s office number.`,
         },
         {
@@ -62,8 +62,11 @@ const addManager = () => {
         },
     ])
     .then(answers => {
-    const {name, eid, email, officeNum} = answers;
-    const manager = new Manager(name, eid, email, officeNum);
+    const {name, id, email, officeNumber} = answers;
+    const manager = new Manager(name, id, email, officeNumber);
+
+    //BCS Help Desk said it needs to be written like so:
+    // const manager["Manager"] = {manager.getName(), manager.getRole(), manager.getId(), manager.getEmail(), manager.getOfficeNumber()}
     teamArr.push(manager);
     if (answers.queryMoreReports === 'Yes') {
         addReports();
@@ -88,7 +91,7 @@ const addReports = () => {
         },
         {
             type: 'input',
-            name: 'eid',
+            name: 'id',
             message: ({name}) => `Input ${name}\'s employee ID.`,
         },
         {
@@ -98,7 +101,7 @@ const addReports = () => {
         },
         {
             type: 'input',
-            name: 'gitHubUserName',
+            name: 'github',
             message: ({name}) => `Input ${name}\'s GitHub username.`,
             when: (input) => input.title === 'Engineer',
         },
@@ -117,13 +120,13 @@ const addReports = () => {
     ])
     .then(answers => {
         if (answers.title === 'Engineer') {
-            const {name, eid, email, gitHubUserName} = answers;
-            const engineer = new Engineer (name, eid, email, gitHubUserName);
+            const {name, id, email, github} = answers;
+            const engineer = new Engineer (name, id, email, github);
             teamArr.push(engineer); 
         
         } else if (answers.title === 'Intern') {
-            const {name, eid, email, school} = answers;
-            const intern = new Intern (name, eid, email, school);
+            const {name, id, email, school} = answers;
+            const intern = new Intern (name, id, email, school);
             teamArr.push(intern);
         };
         (answers.queryMoreReports === 'Yes') ? addReports() : console.log(teamArr); return;

@@ -1,12 +1,12 @@
-const TeamMember = require('../lib/teammember');
+const Employee = require('../lib/employee');
 
-describe("TeamMember", () => {
+describe("Employee", () => {
     describe("Name", () => {
         it("Should set the Name via the constructor function", () => {
         const input = "Cailin Bell Wold";
-        const expected = {"name": "Cailin Bell Wold", "eid": 1, "email": "name@name.com"};
+        const expected = {"name": "Cailin Bell Wold", "id": 1, "email": "name@name.com"};
         
-        const result = new TeamMember(input, 1, "name@name.com");
+        const result = new Employee(input, 1, "name@name.com");
 
         expect(result).toEqual(expected);
         });
@@ -15,9 +15,9 @@ describe("TeamMember", () => {
     describe("Employee ID", () => {
         it("Should set the Employee ID via the constructor function", () => {
         const input = 100;
-        const expected = {"name": "First Last", "eid": 100, "email": "name@name.com"};
+        const expected = {"name": "First Last", "id": 100, "email": "name@name.com"};
         
-        const result = new TeamMember("First Last", input, "name@name.com");
+        const result = new Employee("First Last", input, "name@name.com");
 
         expect(result).toEqual(expected);
         });
@@ -26,9 +26,9 @@ describe("TeamMember", () => {
     describe("Email", () => {
         it("Should set the Email via the constructor function", () => {
         const input = "cmbellwold@gmail.com";
-        const expected = {"name": "First Last", "eid": 1, "email": "cmbellwold@gmail.com"};
+        const expected = {"name": "First Last", "id": 1, "email": "cmbellwold@gmail.com"};
         
-        const result = new TeamMember("First Last", 1, input);
+        const result = new Employee("First Last", 1, input);
 
         expect(result).toEqual(expected);
         });
