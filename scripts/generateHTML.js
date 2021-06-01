@@ -1,7 +1,30 @@
-const fs = require('fs');
-const index = require('../index');
+const fs = require('fs'); //Just commented out while I get arrays to pull right.
+const index = require('../index'); //Just commented out while I get arrays to pull right.
 
 // let currentTeamMemberIndex = [];
+
+// teamArr = [
+//     Manager {
+//         name: 'Manager Name',
+//         eid: '123',
+//         email: 'manager@manager.com',
+//         officeNum: '5'
+//     },
+//     Engineer {
+//         name: 'Engineer Name',
+//         eid: '456',
+//         email: 'engineer@engineer.com',
+//         gitHubUserName: 'EngineerPerson'
+//     },
+//     Intern {
+//         name: 'Intern Name',
+//         eid: '789',
+//         email: 'intern@intern.com',
+//         school: 'UW'
+//     }
+// ]
+
+// console.log (teamArr[0].name);
 
 // Generates HTML for My-Team
 const generateHTML = (teamArr) => {
@@ -40,13 +63,13 @@ const generateHTML = (teamArr) => {
                 <div class='col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4'>
                     <div class='card manager'>
                         <div class='card-body'>
-                            <h4 class='card-title text-center'>${Manager.name}</h4>
+                            <h4 class='card-title text-center'>${manager.name}</h4>
                             <h5 class='card-title text-center'>Manager</h5>
                             <div class='card'>
                                 <ul class='list-group list-group-flush'>
-                                    <li class='list-group-item'>Employee ID:  ${Manager.eid}</li>
-                                    <li class='list-group-item'>Email:  ${Manager.email} <a href="mailto:#"></a></li>
-                                    <li class='list-group-item'>Office Number:  ${Manager.officeNum}</li>
+                                    <li class='list-group-item'>Employee ID:  ${manager.eid}</li>
+                                    <li class='list-group-item'>Email:  ${manager.email} <a href="mailto:#"></a></li>
+                                    <li class='list-group-item'>Office Number:  ${manager.officeNum}</li>
                                 </ul>
                             </div>
                         </div>

@@ -11,7 +11,14 @@ const generateHTML = require('./scripts/generateHTML');
 const teamArr = [];
 
 // Creates file Asynchronously (we used this structure in class)
-const writeFile = util.promisify(fs.writeFile);
+let writeFileAsync = util.promisify(fs.writeFile);
+
+const writeFile = (teamArr) => {
+    // util.promisify(fs.writeFile)
+        writeFileAsync('./dist/MyTeam.html', generateHTML(teamArr))
+        .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
+        .catch((err) => console.error(err));
+}
 
 const welcome =  () => {
     return inquirer.prompt([
@@ -20,8 +27,8 @@ const welcome =  () => {
             name: 'welcome',
             message: 'Welcome to your automated Team Profile Generator. \n You will be asked to input information about your team, starting with your Team Manager. \n These questions will help to complete your customized MyTeam.html. \n Let\'s begin! Press ENTER to continue.',
         },
-        addManager()
     ])
+    .then(addManager)
 };
 
 // Questions Awaiting User Input (Manager is Required First)
@@ -118,14 +125,18 @@ const addReports = () => {
             const {name, eid, email, school} = answers;
             const intern = new Intern (name, eid, email, school);
             teamArr.push(intern);
-        }
-        (answers.queryMoreReports === 'Yes') ? addReports() : console.log(teamArr); writefile(); return;
+        };
+        (answers.queryMoreReports === 'Yes') ? addReports() : console.log(teamArr); return;
     })
+    .then(writeFile);
+    // .then(writefile('./dist/MyTeam.html', generateHTML(teamArr)))
+    // .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
+    // .catch((err) => console.error(err));
 };
 
-writeFile('./dist/MyTeam.html', generateHTML(teamArr))
-    .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
-    .catch((err) => console.error(err));
+// writeFile('./dist/MyTeam.html', generateHTML(teamArr))
+//     .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
+//     .catch((err) => console.error(err));
 
 // Function to initialize app
 const init = () => welcome()
