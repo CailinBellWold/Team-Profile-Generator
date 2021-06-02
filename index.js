@@ -137,10 +137,6 @@ const addReports = () => {
     // .catch((err) => console.error(err));
 };
 
-// writeFile('./dist/MyTeam.html', generateHTML(teamArr))
-//     .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
-//     .catch((err) => console.error(err));
-
 // Function to initialize app
 const init = () => welcome()
 

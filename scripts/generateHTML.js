@@ -1,5 +1,5 @@
-const fs = require('fs'); //Just commented out while I get arrays to pull right.
-const index = require('../index'); //Just commented out while I get arrays to pull right.
+const fs = require('fs');
+const index = require('../index');
 
 // let currentTeamMemberIndex = [];
 
@@ -67,9 +67,9 @@ const generateHTML = (teamArr) => {
                             <h5 class='card-title text-center'>Manager</h5>
                             <div class='card'>
                                 <ul class='list-group list-group-flush'>
-                                    <li class='list-group-item'>Employee ID:  ${manager.eid}</li>
+                                    <li class='list-group-item'>Employee ID:  ${manager.id}</li>
                                     <li class='list-group-item'>Email:  ${manager.email} <a href="mailto:#"></a></li>
-                                    <li class='list-group-item'>Office Number:  ${manager.officeNum}</li>
+                                    <li class='list-group-item'>Office Number:  ${manager.officeNumber}</li>
                                 </ul>
                             </div>
                         </div>
@@ -95,9 +95,9 @@ const generateHTML = (teamArr) => {
                         <h5 class='text-center'><i class="fas fa-laptop-code"></i>Engineer</h5>
                         <div class='card'>
                             <ul class='list-group list-group-flush'>
-                                <li class='list-group-item'>Employee ID: ${Engineer.eid}</li>
+                                <li class='list-group-item'>Employee ID: ${Engineer.id}</li>
                                 <li class='list-group-item'>Email:  ${Engineer.email}<a href="mailto:${Engineer.email}"></a></li>
-                                <li class='list-group-item'>GitHub Username:  ${Engineer.gitHubUserName} <a href="${Engineer.gitHubUserName}"></a></li>
+                                <li class='list-group-item'>GitHub Username:  ${Engineer.github} <a href="${Engineer.github}"></a></li>
                             </ul>
                         </div>
                     </div>
@@ -114,7 +114,7 @@ const generateHTML = (teamArr) => {
                     <h5 class='text-center'><i class="fas fa-user-graduate"></i>Intern</h5>
                         <div class='card'>
                             <ul class='list-group list-group-flush'>
-                                <li class='list-group-item'>Employee ID:  ${Intern.eid}</li>
+                                <li class='list-group-item'>Employee ID:  ${Intern.id}</li>
                                 <li class='list-group-item'>Email:  ${Intern.email}<a href="mailto:${Intern.email}"></a></li>
                                 <li class='list-group-item'>School:  ${Intern.school}</li>
                             </ul>
