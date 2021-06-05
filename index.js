@@ -6,19 +6,9 @@ const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 
-const generateHTML = require('./scripts/generateHTML');
+const generateHTML = require('./src/generateHTML');
 
 const teamArr = [];
-
-// Creates file Asynchronously (we used this structure in class)
-let writeFileAsync = util.promisify(fs.writeFile);
-
-const writeFile = (teamArr) => {
-    // util.promisify(fs.writeFile)
-        writeFileAsync('./dist/MyTeam.html', generateHTML(teamArr))
-        .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
-        .catch((err) => console.error(err));
-}
 
 const welcome =  () => {
     return inquirer.prompt([
@@ -42,17 +32,17 @@ const addManager = () => {
         {
             type: 'input',
             name: 'id',
-            message: ({name}) => `Input ${name}\'s employee ID.`,
+            message: ({ name }) => `Input ${name}\'s employee ID.`,
         },
         {
             type: 'input',
             name: 'email',
-            message: ({name}) => `Input ${name}\'s email address.`,
+            message: ({ name }) => `Input ${name}\'s email address.`,
         },
         {
             type: 'input',
             name: 'officeNumber',
-            message: ({name}) => `Input ${name}\'s office number.`,
+            message: ({ name }) => `Input ${name}\'s office number.`,
         },
         {
             type: 'list',
@@ -64,9 +54,6 @@ const addManager = () => {
     .then(answers => {
     const {name, id, email, officeNumber} = answers;
     const manager = new Manager(name, id, email, officeNumber);
-
-    //BCS Help Desk said it needs to be written like so:
-    // const manager["Manager"] = {manager.getName(), manager.getRole(), manager.getId(), manager.getEmail(), manager.getOfficeNumber()}
     teamArr.push(manager);
     if (answers.queryMoreReports === 'Yes') {
         addReports();
@@ -87,28 +74,28 @@ const addReports = () => {
         {
             type: 'input',
             name: 'name',
-            message: ({title}) => `Input ${title}\'s name.`,
+            message: ({ title }) => `Input ${title}\'s name.`,
         },
         {
             type: 'input',
             name: 'id',
-            message: ({name}) => `Input ${name}\'s employee ID.`,
+            message: ({ name }) => `Input ${name}\'s employee ID.`,
         },
         {
             type: 'input',
             name: 'email',
-            message: ({name}) => `Input ${name}\'s email address.`,
+            message: ({ name }) => `Input ${name}\'s email address.`,
         },
         {
             type: 'input',
             name: 'github',
-            message: ({name}) => `Input ${name}\'s GitHub username.`,
+            message: ({ name }) => `Input ${name}\'s GitHub username.`,
             when: (input) => input.title === 'Engineer',
         },
         {
             type: 'input',
             name: 'school',
-            message: ({name}) => `Input ${name}\'s school.`,
+            message: ({ name }) => `Input ${name}\'s school.`,
             when: (input) => input.title === 'Intern',
         },
         {
@@ -129,12 +116,8 @@ const addReports = () => {
             const intern = new Intern (name, id, email, school);
             teamArr.push(intern);
         };
-        (answers.queryMoreReports === 'Yes') ? addReports() : console.log(teamArr); return;
+        (answers.queryMoreReports === 'Yes') ? addReports() : generateHTML(teamArr);
     })
-    .then(writeFile);
-    // .then(writefile('./dist/MyTeam.html', generateHTML(teamArr)))
-    // .then(() => console.log('Successfully wrote MyTeam.html to your dist folder'))
-    // .catch((err) => console.error(err));
 };
 
 // Function to initialize app

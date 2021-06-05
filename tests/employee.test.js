@@ -1,6 +1,16 @@
 const Employee = require('../lib/employee');
 
 describe("Employee", () => {
+
+    // describe("Instanciate", () => {
+    //     it("Can instantiate an instance of an Employee", () => {
+    //     const input = new Employee();
+    //     const expected = {}
+
+    //     const result = {}
+    //     expect(result).toEqual(expected);
+    //   });
+
     describe("Name", () => {
         it("Should set the Name via the constructor function", () => {
         const input = "Cailin Bell Wold";
