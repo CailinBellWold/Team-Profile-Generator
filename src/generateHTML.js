@@ -25,7 +25,7 @@ const generate = (teamArr) => {
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?&family=Poppins:wght@200;300;400;500&family=Roboto:wght@300;400;500;700&display=swap" >
-            <link rel="stylesheet" href="styles/style.css">
+            <link rel="stylesheet" href="../styles/style.css">
             <title>My Team</title>
             <!--<link rel="shortcut icon" type="image/png" href="images/favicon.png"/> -->
         </head>
@@ -58,7 +58,6 @@ const generateHTML = (teamArr) => {
     fs.writeFile('./dist/MyTeam.html', generate(teamArr), function(err, result) {
         if(err) console.log('error', err);
     });
-    // return fs.writeFile ('./dist/MyTeam.html', generate(teamArr))
 };
 
 
