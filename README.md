@@ -23,7 +23,7 @@ This exercise provided my first experience with writing tests and utilizing jest
 
 ## Core Objectives Met
 
-1. (IN PROGRESS) Following user responses to prompts for team members and their information, an HTML file is generated that displays a nicely formatted team roster based on user input. 
+1. Following user responses to prompts for team members and their information, an HTML file is generated that displays a nicely formatted team roster based on user input. 
 2. When a user clicks on an email address in the HTML, their default email program opens and populates the TO field of the email with the address.
 3. When a user clicks on the GitHub username, that GitHub profile opens in a new tab.
 4. When a user starts the application, they are prompted to enter the team manager’s name, employee ID, email address, and office number.
@@ -86,3 +86,5 @@ SOFTWARE.
 
 ## Questions
 For inquiries, please contact [Cailin Bell Wold](https://github.com/CailinBellWold).
+
+Special thanks to my tutor, [Armando Osorio](https://github.com/mandoosorio), for guidance on this project.

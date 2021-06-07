@@ -55,11 +55,7 @@ const addManager = () => {
     const {name, id, email, officeNumber} = answers;
     const manager = new Manager(name, id, email, officeNumber);
     teamArr.push(manager);
-    if (answers.queryMoreReports === 'Yes') {
-        addReports();
-    } else {
-        return;
-    }
+    (answers.queryMoreReports === 'Yes') ? addReports(): generateHTML(teamArr);
     })
 };
 
