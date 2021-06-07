@@ -2,14 +2,15 @@ const Employee = require('../lib/employee');
 
 describe("Employee", () => {
 
-    // describe("Instanciate", () => {
-    //     it("Can instantiate an instance of an Employee", () => {
-    //     const input = new Employee();
-    //     const expected = {}
+    describe("Initialization", () => {
+        it("Should create an object with a name, id and email address if provided valid arguments", () => {
+            const employee = new Employee("Cailin Bell Wold", 3, "cmbellwold@gmail.com");
 
-    //     const result = {}
-    //     expect(result).toEqual(expected);
-    //   });
+            expect(employee.name).toEqual("Cailin Bell Wold");
+            expect(employee.id).toEqual(3);
+            expect(employee.email).toEqual("cmbellwold@gmail.com");
+        })
+    });
 
     describe("Name", () => {
         it("Should set the Name via the constructor function", () => {
