@@ -1,48 +1,91 @@
+// NPM Packages
 const inquirer = require('inquirer');
-const fs = require('fs');
-const util = require('util');
+const colors = require('colors');
 
+// Employee Classes
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 
+// HTML Generator
 const generateHTML = require('./src/generateHTML');
 
+// Colorized Fonts and Other Default Language
+const welcomeMsg = `* * * * WELCOME TO YOUR AUTOMATED TEAM PROFILE GENERATOR. * * * *\n`.underline.green;
+const error = `\r\n>> ERR: `.red.bold;
+const noInfoEntered = `No information was entered.`;
+
+// Array to Hold Team
 const teamArr = [];
 
+// Welcome and Instructions
 const welcome =  () => {
     return inquirer.prompt([
         {
             type: 'input',
             name: 'welcome',
-            message: 'Welcome to your automated Team Profile Generator. \n You will be asked to input information about your team, starting with your Team Manager. \n These questions will help to complete your customized MyTeam.html. \n Let\'s begin! Press ENTER to continue.',
+            message: welcomeMsg + '\nYou will be asked to input information about your team, starting with your Team Manager. \nThese questions will help to complete your customized MyTeam HTML doc. \nLet\'s begin! Press ENTER to continue. \n',
         },
     ])
     .then(addManager)
 };
 
-// Questions Awaiting User Input (Manager is Required First)
+// Questions Awaiting User Input
+// Manager Questions
 const addManager = () => {
     return inquirer.prompt([
         {
             type: 'input',
             name: 'name',
             message: 'Input Team Manager\'s name.',
+            validate: name => {
+                if (name) {
+                    return true;
+                } else {
+                    console.log (error + noInfoEntered + `Please enter the Team Manager\'s name.`);
+                    return false; 
+                }
+            },
         },
         {
             type: 'input',
             name: 'id',
             message: ({ name }) => `Input ${name}\'s employee ID.`,
+            validate: id => {
+                if (id) {
+                    return true;
+                } else {
+                    ({ name }) => console.log (error + noInfoEntered + `Please enter ${name}\'s employee ID.`);
+                    return false; 
+                }
+            },
         },
         {
             type: 'input',
             name: 'email',
             message: ({ name }) => `Input ${name}\'s email address.`,
+            validate: email => {
+                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+                if (valid) {
+                    return true;
+                } else {
+                    console.log(error + `An email address is required. Please enter a valid email address.`)
+                    return false;
+                };
+            },
         },
         {
             type: 'input',
             name: 'officeNumber',
             message: ({ name }) => `Input ${name}\'s office number.`,
+            validate: officeNumber => {
+                if (officeNumber) {
+                    return true;
+                } else {
+                    ({ name }) => console.log (error + noInfoEntered + `Please enter ${name}\'s office number.`);
+                    return false; 
+                }
+            },
         },
         {
             type: 'list',
@@ -59,6 +102,7 @@ const addManager = () => {
     })
 };
 
+// Direct Report Questions
 const addReports = () => {
     return inquirer.prompt([
         {
@@ -71,28 +115,69 @@ const addReports = () => {
             type: 'input',
             name: 'name',
             message: ({ title }) => `Input ${title}\'s name.`,
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                } else {
+                    ({ title }) => console.log (error + noInfoEntered + `Please enter the ${title}\'s name.`);
+                    return false; 
+                }
+            },
         },
         {
             type: 'input',
             name: 'id',
             message: ({ name }) => `Input ${name}\'s employee ID.`,
+            validate: id => {
+                if (id) {
+                    return true;
+                } else {
+                    ({ name }) => console.log (error + noInfoEntered + `Please enter ${name}\'s employee ID.`);
+                    return false; 
+                }
+            },
         },
         {
             type: 'input',
             name: 'email',
             message: ({ name }) => `Input ${name}\'s email address.`,
+            validate: email => {
+                valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+                if (valid) {
+                    return true;
+                } else {
+                    console.log(error + `An email address is required. Please enter a valid email address.`)
+                    return false;
+                };
+            },
         },
         {
             type: 'input',
             name: 'github',
             message: ({ name }) => `Input ${name}\'s GitHub username.`,
             when: (input) => input.title === 'Engineer',
+            validate: github => {
+                if (github) {
+                    return true;
+                } else {
+                    ({ name }) => console.log (error + noInfoEntered + `Please enter ${name}\'s GitHub username.`);
+                    return false; 
+                }
+            },
         },
         {
             type: 'input',
             name: 'school',
             message: ({ name }) => `Input ${name}\'s school.`,
             when: (input) => input.title === 'Intern',
+            validate: school => {
+                if (school) {
+                    return true;
+                } else {
+                    ({ name }) => console.log (error + noInfoEntered + `Please enter ${name}\'s school.`);
+                    return false; 
+                }
+            },
         },
         {
             type: 'list',
@@ -116,8 +201,8 @@ const addReports = () => {
     })
 };
 
-// Function to initialize app
+// Function to Initialize App
 const init = () => welcome()
 
-// Function call to initialize app
+// Initialize App
 init();

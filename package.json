@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/CailinBellWold/Team-Profile-Generator#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "fs": "0.0.1-security",
-    "inquirer": "^8.1.0",
-    "util": "^0.12.3"
+    "inquirer": "^8.1.0"
   }
 }

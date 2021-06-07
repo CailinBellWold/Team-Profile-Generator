@@ -1,9 +1,10 @@
 const fs = require('fs');
 const index = require('../index');
+const colors = require('colors');
 
-// Generates HTML for MyTeam
+// Generate HTML for MyTeam
 const generate = (teamArr) => {
-    //Creates new arrays of employee card HTML, with employees grouped by role.
+    // Functions to Create New Arrays of Employee Card HTML, Grouping Employees by Role
     function genManagers(employee) {
         for (i = 0; i < employee.length; i++) {
             if (employee[i].role === "Manager") {
@@ -26,10 +27,12 @@ const generate = (teamArr) => {
         }
     }
 
+    // Arrays to Hold HTML for Each Employee Card by Role
     let managerCardsHTML = [];
     let engineerCardsHTML = [];
     let internCardsHTML = [];
 
+    // Generate Arrays of Employee Cards
     genManagers(teamArr);
     genEngineers(teamArr);
     genInterns(teamArr);
@@ -93,7 +96,7 @@ const generate = (teamArr) => {
 
 const generateHTML = (teamArr) => {
     fs.writeFile('./dist/MyTeam.html', generate(teamArr), function(err, result) {
-        (err) ? console.log('error', err): console.log(`\r\n* * * * * Successfully wrote MyTeam.html to your dist folder. * * * * *`);
+        (err) ? console.log('error', err): console.log(`\r\nSuccessfully wrote MyTeam.html to your dist folder.`.underline.green);
         }
     );
 };
