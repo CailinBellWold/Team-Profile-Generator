@@ -16,7 +16,7 @@ describe("Engineer", () => {
                 <div class='card engineer'>
                     <div class='card-body'>
                         <h4 class='card-title text-center'>Cailin Bell Wold</h4>
-                        <h5 class='text-center'><i class="fas fa-laptop-code"></i>  Engineer</h5>
+                        <h5 class='text-center'><i class="fas fa-laptop-code"></i>&nbsp Engineer</h5>
                         <div class='card'>
                             <ul class='list-group list-group-flush'>
                                 <li class='list-group-item'>EMPLOYEE ID:&nbsp 3</li>
@@ -33,12 +33,10 @@ describe("Engineer", () => {
 
     describe("GitHub", () => {
         it("Should set the GitHub Username via the constructor function", () => {
-        const input = "CailinBellWold";
-        const expected = {"name": "Name", "id": 1, "email": "name@name.com", "github": "CailinBellWold"};
-        
-        const result = new Engineer("Name", 1, "name@name.com", input);
+            const input = "CailinBellWold";
+            const result = new Engineer("Name", 1, "name@name.com", input).getGithub();
 
-        expect(result).toEqual(expected);
+            expect(input).toEqual(result);
         });
     });
 });
