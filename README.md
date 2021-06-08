@@ -10,7 +10,7 @@ Streamlining each step of the programming process enables the developer to spend
 
 ### Learning Targets
 This exercise provided my first experience with writing tests and utilizing jestjs.io to do so.
-#
+
 ## Table of Contents
 - [Core Objectives Met](#Core)
 - [Technologies Used](#Technologies)
@@ -20,7 +20,7 @@ This exercise provided my first experience with writing tests and utilizing jest
 - [Contributing](#Contributing)
 - [Tests](#Tests)
 - [Questions](#Questions)
-#
+
 ## Core Objectives Met
 
 1. Following user responses to prompts for team members and their information, an HTML file is generated that displays a nicely formatted team roster based on user input. 
@@ -31,7 +31,7 @@ This exercise provided my first experience with writing tests and utilizing jest
 6. When a user selects the engineer option, then they are prompted to enter the engineer’s name, ID, email, and GitHub username, and are taken back to the menu. 
 7. When a user selects the intern option, then they are prompted to enter the intern’s name, ID, email, and school, and are taken back to the menu.
 8. When a user is finished building their team, then they exit the application and the HTML is generated.
-#
+
 ## Technologies Used
 - JavaScript
 - Node.js
@@ -40,36 +40,34 @@ This exercise provided my first experience with writing tests and utilizing jest
 - [NPM Inquirer Package](https://www.npmjs.com/package/inquirer)
 - [NPM FS Package](https://www.npmjs.com/package/fs)
 - [NPM Colors Package](https://www.npmjs.com/package/colors)
-#
+
 ## Installation
 
 1. Clone this Team-Profile-Generator repo to your machine.
 2. Open the repo in your terminal.
 3. Run ```npm init```
 4. Run ```npm install```
-#
+
 ## Usage
 
 1. Open Team-Profile-Generator (now stored on your machine) in your terminal.
 2. Run ``` node index.js ```
 2. You will be prompted to answer questions about your team. Answer each question.
 3. Your My-Team.html file will write to the output folder. 
-#
+
 ## Screenshots and Demo Videos 
 
 [VIDEO LINK | Full Application Demonstration](https://youtu.be/kuflGg4qf1A)  <br /> 
 DESCRIPTION: *Running tests, then creating a My-Team HTML file by following the in-terminal prompts. Verifying that the My-Team file is created and meets project requirements.*
-#
+
 
 SCREENSHOT | *Demo console*
 
 ![My-Team Console screenshot.](./images/My_Team_Console_Screenshot.PNG)
-#
+
 SCREENSHOT | *Demo My Team HTML file* 
 
 ![My-Team.html output screenshot.](./images/My_Team_HTML_Screenshot.png)
-#
-
 
 ## MIT License
 &copy;2021 Cailin Bell Wold
@@ -91,7 +89,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-#
+
 ## Questions
 For inquiries, please contact [Cailin Bell Wold](https://github.com/CailinBellWold).
 
