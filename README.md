@@ -63,7 +63,7 @@ DESCRIPTION: *Running tests, then creating a My-Team HTML file by following the 
 
 SCREENSHOT | *Demo console*
 
-![My-Team Console screenshot.](./images/My_Team_Console_Screenshot.png)
+![My-Team Console screenshot.](./images/My_Team_Console_Screenshot.PNG)
 #
 SCREENSHOT | *Demo My Team HTML file* 
 
